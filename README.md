@@ -145,7 +145,9 @@ plt.title('Correlation Matrix of Numerical Features')
 plt.show()
 ```
 
-## 6. Model Training
+## Model Development
+
+### 6. Model Training
 After understanding the data, the next step is to train a predictive model using a regression algorithm. We will use three models: K-Nearest Neighbors, Random Forest, and AdaBoost.
 
 ```python
@@ -175,7 +177,7 @@ boosting.fit(X_train, y_train)
 train_mse_boosting = mean_squared_error(y_true=y_train, y_pred=boosting.predict(X_train))
 ```
 
-## 7. Model Evaluation
+## Model Evaluation
 After training the model, we will evaluate its performance using Mean Squared Error (MSE) for both training and testing datasets.
 ```Python
 # Create a DataFrame to store MSE results
@@ -194,12 +196,12 @@ mse_results.loc['AdaBoost', 'Test MSE'] = mean_squared_error(y_true=y_test, y_pr
 print(mse_results)
 ```
 
-## 8. Conclusion
+## Conclusion
 In this project, we analyze various factors that influence students' test scores and build a predictive model to estimate test scores based on these features. We use three regression algorithms: K-Nearest Neighbors, Random Forest, and AdaBoost. The evaluation results show the MSE for each model on the training and testing datasets.
 
 From this analysis, we can draw conclusions about the factors that most influence student academic performance and provide recommendations for improving student learning outcomes based on these findings.
 
-## 9. Future Work
+## Future Work
 For further research, there are several steps you can take:
 
 Exploration of additional features: Search for and add other features that might affect exam scores.
