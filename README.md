@@ -94,8 +94,7 @@ numerical_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Sc
 categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender']
 all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
 ```
-
-##### Visualizing numerical features
+#### Visualizing Distribution
 ```python
 sns.boxplot(x=StudentPerformanceFactors['Hours_Studied'])
 ```
@@ -121,12 +120,6 @@ sns.boxplot(x=StudentPerformanceFactors['Exam_Score'])
 sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
 ```
 
-![Cuplikan layar 2024-10-19 015412](https://github.com/user-attachments/assets/a8b8aa95-111f-4f23-b3b7-34539dcc7f44)
-![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/41029724-76f7-41ca-bb51-3fd45ba1876a)
-![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/59ca5157-3083-45f3-bb52-42e4241785e2)
-
-
-
 ##### Removing Outliners
 identifies and removes outliers from the numerical columns of the StudentPerformanceFactors DataFrame using the IQR method. It then checks the shape of the DataFrame to see how many records are left after the outlier removal, ensuring that the data used for further analysis is cleaner and more reliable.
 
@@ -140,6 +133,23 @@ StudentPerformanceFactors = StudentPerformanceFactors[~((numerical_cols < (Q1 - 
 StudentPerformanceFactors.shape
 ```
 
+![Cuplikan layar 2024-10-19 015412](https://github.com/user-attachments/assets/a8b8aa95-111f-4f23-b3b7-34539dcc7f44)
+![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/41029724-76f7-41ca-bb51-3fd45ba1876a)
+![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/59ca5157-3083-45f3-bb52-42e4241785e2)
+
+##### Visualizing numerical features
+```python
+# Correlation matrix for numerical features
+plt.figure(figsize=(12, 8))
+correlation_matrix = StudentPerformanceFactors_cleaned[numerical_features].corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix of Numerical Features')
+plt.show()
+```
+
+![Cuplikan layar 2024-10-19 020404](https://github.com/user-attachments/assets/641b02fc-f777-45f5-ab63-b4f7e138a0ba)
+
+
 ##### Multivariate Analysis
 Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
 
@@ -151,6 +161,9 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Matrix of Numerical Features')
 plt.show()
 ```
+
+![Cuplikan layar 2024-10-19 020456](https://github.com/user-attachments/assets/3c4ae451-9832-4c4d-bca1-03bb511aa0ca)
+
 
 ## Model Development
 
