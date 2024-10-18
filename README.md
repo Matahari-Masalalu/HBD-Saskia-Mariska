@@ -147,7 +147,7 @@ plt.show()
 
 ## Model Development
 
-### 6. Model Training
+### 1. Model Training
 After understanding the data, the next step is to train a predictive model using a regression algorithm. We will use three models: K-Nearest Neighbors, Random Forest, and AdaBoost.
 
 ```python
