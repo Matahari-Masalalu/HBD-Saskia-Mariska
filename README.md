@@ -58,21 +58,21 @@ StudentPerformanceFactors = pd.read_csv('/content/StudentPerformanceFactors.csv'
 ### 3. Data Cleaning
 Data cleaning is an essential step to ensure the quality of our dataset. This involves:
 
-## 1. Removing Duplicates 
+#### 1. Removing Duplicates 
 Duplicates in the dataset can cause bias in the analysis. Therefore, we need to remove rows that have the same values across all columns.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors.drop_duplicates()
 ```
 
-## 2. Removing Missing Values (NaN)
+#### 2. Removing Missing Values (NaN)
 Missing values can disrupt statistical analysis and visualization. Therefore, rows containing NaN values should be removed.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned.dropna()
 ```
 
-## 3.Handling Outliers using IQR
+#### 3.Handling Outliers using IQR
 Outliers can skew your analysis and lead to misleading results. One common method to detect and handle outliers is the Interquartile Range (IQR) method.
 
 ```python
@@ -83,7 +83,7 @@ IQR = Q3 - Q1
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned[~((numerical_cols < (Q1 - 1.5 * IQR)) | (numerical_cols > (Q3 + 1.5 * IQR))).any(axis=1)]
 ```
 
-### Univariate Analysis
+##### Univariate Analysis
 Univariate analysis is a statistical technique that involves the examination of a single variable in a dataset. The primary goal is to summarize and find patterns within that variable without considering relationships with other variables.
 
 To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
@@ -94,7 +94,7 @@ categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracur
 all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
 ```
 
-### Visualizing numerical features
+##### Visualizing numerical features
 ```python
 sns.boxplot(x=StudentPerformanceFactors['Hours_Studied'])
 ```
@@ -120,7 +120,7 @@ sns.boxplot(x=StudentPerformanceFactors['Exam_Score'])
 sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
 ```
 
-### Removing Outliners
+##### Removing Outliners
 identifies and removes outliers from the numerical columns of the StudentPerformanceFactors DataFrame using the IQR method. It then checks the shape of the DataFrame to see how many records are left after the outlier removal, ensuring that the data used for further analysis is cleaner and more reliable.
 
 ```python
@@ -133,7 +133,7 @@ StudentPerformanceFactors = StudentPerformanceFactors[~((numerical_cols < (Q1 - 
 StudentPerformanceFactors.shape
 ```
 
-### Multivariate Analysis
+##### Multivariate Analysis
 Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
 
 ```python
