@@ -121,14 +121,10 @@ sns.boxplot(x=StudentPerformanceFactors['Exam_Score'])
 sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
 ```
 
-![Cuplikan layar 2024-10-19 015420](https://github.com/user-attachments/assets/46772843-e909-452a-82e8-a3b3b0ffddf4)
-![Cuplikan layar 2024-10-19 015412](https://github.com/user-attachments/assets/70bcde47-c062-4b0c-a5c8-7e3ed8a52bfe)
-![Cuplikan layar 2024-10-19 015403](https://github.com/user-attachments/assets/987f5100-622e-4140-a906-1b333b6d5098)
-![Cuplikan layar 2024-10-19 015355](https://github.com/user-attachments/assets/124c51fa-a34b-45c8-8219-921e734a4870)
-![Cuplikan layar 2024-10-19 015330](https://github.com/user-attachments/assets/277851b8-f714-46e1-9e37-8f8bd1bf14db)
-![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/9f6f091a-f115-4481-88da-5390875675b1)
-![Cuplikan layar 2024-10-19 015436](https://github.com/user-attachments/assets/b859c2da-24f2-4698-a474-61998c3f18c1)
-![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/1a7ad67b-80c5-4a12-9a26-9eb103aa7621)
+![Cuplikan layar 2024-10-19 015412](https://github.com/user-attachments/assets/a8b8aa95-111f-4f23-b3b7-34539dcc7f44)
+![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/41029724-76f7-41ca-bb51-3fd45ba1876a)
+![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/59ca5157-3083-45f3-bb52-42e4241785e2)
+
 
 
 ##### Removing Outliners
