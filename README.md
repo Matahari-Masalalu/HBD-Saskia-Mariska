@@ -88,15 +88,11 @@ Univariate analysis is a statistical technique that involves the examination of 
 
 To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
 
-python
-
-Verify
-
-Open In Editor
-Edit
-Copy code
-numerical_features = ['Hours_Studied', 'Attendance', 'Sleep_Hours', 'Previous_Scores', 'Tutoring_Sessions', 'Physical_Activity', 'Exam_Score']
-categorical_features = ['Parental_Involvement', 'Access_to_Resources', 'Extracurricular_Activities', 'Motivation_Level', '
+```python
+numerical_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Exam_Score']
+categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender']
+all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
+```
 
 ### 5. Multivariate Analysis
 Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
