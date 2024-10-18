@@ -58,14 +58,14 @@ StudentPerformanceFactors = pd.read_csv('/content/StudentPerformanceFactors.csv'
 ### 3. Data Cleaning
 Data cleaning is an essential step to ensure the quality of our dataset. This involves:
 
-# 1. Removing Duplicates 
+## 1. Removing Duplicates 
 Duplicates in the dataset can cause bias in the analysis. Therefore, we need to remove rows that have the same values across all columns.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors.drop_duplicates()
 ```
 
-# 2. Removing Missing Values (NaN)
+## 2. Removing Missing Values (NaN)
 Missing values can disrupt statistical analysis and visualization. Therefore, rows containing NaN values should be removed.
 
 ```python
@@ -83,7 +83,7 @@ IQR = Q3 - Q1
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned[~((numerical_cols < (Q1 - 1.5 * IQR)) | (numerical_cols > (Q3 + 1.5 * IQR))).any(axis=1)]
 ```
 
-### 4. Univariate Analysis
+# Univariate Analysis
 Univariate analysis is a statistical technique that involves the examination of a single variable in a dataset. The primary goal is to summarize and find patterns within that variable without considering relationships with other variables.
 
 To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
@@ -120,7 +120,20 @@ sns.boxplot(x=StudentPerformanceFactors['Exam_Score'])
 sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
 ```
 
-### 5. Multivariate Analysis
+# Removing Outliners
+identifies and removes outliers from the numerical columns of the StudentPerformanceFactors DataFrame using the IQR method. It then checks the shape of the DataFrame to see how many records are left after the outlier removal, ensuring that the data used for further analysis is cleaner and more reliable.
+
+```python
+numerical_cols = StudentPerformanceFactors.select_dtypes(include=[np.number]) # removing the outliner
+Q1 = numerical_cols.quantile(0.25)
+Q3 = numerical_cols.quantile(0.75)
+IQR = Q3 - Q1
+StudentPerformanceFactors = StudentPerformanceFactors[~((numerical_cols < (Q1 - 1.5 * IQR)) | (numerical_cols > (Q3 + 1.5 * IQR))).any(axis=1)]
+
+StudentPerformanceFactors.shape
+```
+
+# Multivariate Analysis
 Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
 
 ```python
@@ -132,7 +145,7 @@ plt.title('Correlation Matrix of Numerical Features')
 plt.show()
 ```
 
-### 6. Model Training
+## 6. Model Training
 After understanding the data, the next step is to train a predictive model using a regression algorithm. We will use three models: K-Nearest Neighbors, Random Forest, and AdaBoost.
 
 ```python
@@ -162,7 +175,7 @@ boosting.fit(X_train, y_train)
 train_mse_boosting = mean_squared_error(y_true=y_train, y_pred=boosting.predict(X_train))
 ```
 
-### 7. Model Evaluation
+## 7. Model Evaluation
 After training the model, we will evaluate its performance using Mean Squared Error (MSE) for both training and testing datasets.
 ```Python
 # Create a DataFrame to store MSE results
@@ -181,12 +194,12 @@ mse_results.loc['AdaBoost', 'Test MSE'] = mean_squared_error(y_true=y_test, y_pr
 print(mse_results)
 ```
 
-### 8. Conclusion
+## 8. Conclusion
 In this project, we analyze various factors that influence students' test scores and build a predictive model to estimate test scores based on these features. We use three regression algorithms: K-Nearest Neighbors, Random Forest, and AdaBoost. The evaluation results show the MSE for each model on the training and testing datasets.
 
 From this analysis, we can draw conclusions about the factors that most influence student academic performance and provide recommendations for improving student learning outcomes based on these findings.
 
-### 9. Future Work
+## 9. Future Work
 For further research, there are several steps you can take:
 
 Exploration of additional features: Search for and add other features that might affect exam scores.
