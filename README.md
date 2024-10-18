@@ -137,17 +137,17 @@ StudentPerformanceFactors.shape
 ![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/41029724-76f7-41ca-bb51-3fd45ba1876a)
 ![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/59ca5157-3083-45f3-bb52-42e4241785e2)
 
+##### Visualizing categorical features
+![Cuplikan layar 2024-10-19 020404](https://github.com/user-attachments/assets/641b02fc-f777-45f5-ab63-b4f7e138a0ba)
+
 ##### Visualizing numerical features
 ```python
-# Correlation matrix for numerical features
-plt.figure(figsize=(12, 8))
-correlation_matrix = StudentPerformanceFactors_cleaned[numerical_features].corr()
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
-plt.title('Correlation Matrix of Numerical Features')
+StudentPerformanceFactors.hist(bins=20, figsize=(20,15))
 plt.show()
 ```
 
-![Cuplikan layar 2024-10-19 020404](https://github.com/user-attachments/assets/641b02fc-f777-45f5-ab63-b4f7e138a0ba)
+![Cuplikan layar 2024-10-19 020456](https://github.com/user-attachments/assets/3c4ae451-9832-4c4d-bca1-03bb511aa0ca)
+
 
 
 ##### Multivariate Analysis
@@ -161,8 +161,6 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Matrix of Numerical Features')
 plt.show()
 ```
-
-![Cuplikan layar 2024-10-19 020456](https://github.com/user-attachments/assets/3c4ae451-9832-4c4d-bca1-03bb511aa0ca)
 
 
 ## Model Development
