@@ -84,16 +84,6 @@ IQR = Q3 - Q1
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned[~((numerical_cols < (Q1 - 1.5 * IQR)) | (numerical_cols > (Q3 + 1.5 * IQR))).any(axis=1)]
 ```
 
-##### Univariate Analysis
-Univariate analysis is a statistical technique that involves the examination of a single variable in a dataset. The primary goal is to summarize and find patterns within that variable without considering relationships with other variables.
-
-To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
-
-```python
-numerical_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Exam_Score']
-categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender']
-all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
-```
 #### Visualizing Distribution
 ```python
 sns.boxplot(x=StudentPerformanceFactors['Hours_Studied'])
@@ -137,8 +127,27 @@ StudentPerformanceFactors.shape
 ![Cuplikan layar 2024-10-19 015321](https://github.com/user-attachments/assets/41029724-76f7-41ca-bb51-3fd45ba1876a)
 ![Cuplikan layar 2024-10-19 015427](https://github.com/user-attachments/assets/59ca5157-3083-45f3-bb52-42e4241785e2)
 
+
+##### Univariate Analysis
+Univariate analysis is a statistical technique that involves the examination of a single variable in a dataset. The primary goal is to summarize and find patterns within that variable without considering relationships with other variables.
+
+To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
+
+```python
+numerical_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Exam_Score']
+categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender']
+all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
+```
+
 ##### Visualizing categorical features
+```pythonfeature = categorical_features[1]
+count = StudentPerformanceFactors[feature].value_counts()
+percent = 100*StudentPerformanceFactors[feature].value_counts(normalize=True)
+df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
+print(df)
+count.plot(kind='bar', title=feature);
 ![Cuplikan layar 2024-10-19 020404](https://github.com/user-attachments/assets/641b02fc-f777-45f5-ab63-b4f7e138a0ba)
+```
 
 ##### Visualizing numerical features
 ```python
