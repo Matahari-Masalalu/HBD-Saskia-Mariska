@@ -94,6 +94,17 @@ categorical_features = ['Parental_Involvement',	'Access_to_Resources',	'Extracur
 all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',	'Tutoring_Sessions',	'Physical_Activity',	'Parental_Involvement',	'Access_to_Resources',	'Extracurricular_Activities', 'Motivation_Level',	'Internet_Access', 'Family_Income',	'Teacher_Quality',	'School_Type',	'Peer_Influence', 'Learning_Disabilities',  'Parental_Education_Level',	'Distance_from_Home',	'Gender', 'Exam_Score']
 ```
 
+# Visualizing numerical features
+```python
+for feature in numerical_features:
+    plt.figure(figsize=(10, 6))
+    sns.histplot(StudentPerformanceFactors_cleaned[feature], bins=30, kde=True)
+    plt.title(f'Distribution of {feature}')
+    plt.xlabel(feature)
+    plt.ylabel('Frequency')
+    plt.show()
+```
+
 ### 5. Multivariate Analysis
 Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
 
