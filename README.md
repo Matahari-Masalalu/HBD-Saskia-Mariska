@@ -58,17 +58,35 @@ StudentPerformanceFactors = pd.read_csv('/content/StudentPerformanceFactors.csv'
 ### 3. Data Cleaning
 Data cleaning is an essential step to ensure the quality of our dataset. This involves:
 
-## 1. Removing Duplicates: Duplicates in the dataset can cause bias in the analysis. Therefore, we need to remove rows that have the same values across all columns.
+## 1. Removing Duplicates 
+Duplicates in the dataset can cause bias in the analysis. Therefore, we need to remove rows that have the same values across all columns.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors.drop_duplicates()
 ```
 
-## 2. Removing Missing Values (NaN): Missing values can disrupt statistical analysis and visualization. Therefore, rows containing NaN values should be removed.
+## 2. Removing Missing Values (NaN)
+Missing values can disrupt statistical analysis and visualization. Therefore, rows containing NaN values should be removed.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned.dropna()
 ```
+
+## 3.Handling Outliers using IQR
+Outliers can skew your analysis and lead to misleading results. One common method to detect and handle outliers is the Interquartile Range (IQR) method.
+
+```python
+numerical_cols = StudentPerformanceFactors_cleaned.select_dtypes(include=[np.number])
+Q1 = numerical_cols.quantile(0.25)
+Q3 = numerical_cols.quantile(0.75)
+IQR = Q3 - Q1
+StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned[~((numerical_cols < (Q1 - 1.5 * IQR)) | (numerical_cols > (Q3 + 1.5 * IQR))).any(axis=1)]
+```
+
+### 4. Univariate Analysis
+Univariate analysis is a statistical technique that involves the examination of a single variable in a dataset. The primary goal is to summarize and find patterns within that variable without considering relationships with other variables.
+
+To facilitate data analysis and visualization, we categorize the variables in the dataset into two main types: numerical variables and categorical variables.
 
 python
 
@@ -77,8 +95,17 @@ Verify
 Open In Editor
 Edit
 Copy code
-numerical_cols = StudentPerformanceFactors_cleaned.select_dtypes(include=[np.number])
-Q1 = numerical_cols.quantile(0.25)
-Q3 = numerical_cols.quantile(0.75)
-IQR = Q3 - Q1
-StudentPerformanceFactors_cleaned = StudentPerformanceFactors_cleaned[~(
+numerical_features = ['Hours_Studied', 'Attendance', 'Sleep_Hours', 'Previous_Scores', 'Tutoring_Sessions', 'Physical_Activity', 'Exam_Score']
+categorical_features = ['Parental_Involvement', 'Access_to_Resources', 'Extracurricular_Activities', 'Motivation_Level', '
+
+### 5. Multivariate Analysis
+Multivariate analysis involves examining the relationships between multiple variables. This helps in understanding how different factors interact with each other and their combined effect on exam scores.
+
+```python
+# Correlation matrix for numerical features
+plt.figure(figsize=(12, 8))
+correlation_matrix = StudentPerformanceFactors_cleaned[numerical_features].corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix of Numerical Features')
+plt.show()
+```
