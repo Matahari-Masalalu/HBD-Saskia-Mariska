@@ -96,13 +96,28 @@ all_features = ['Hours_Studied',	'Attendance',	'Sleep_Hours',	'Previous_Scores',
 
 # Visualizing numerical features
 ```python
-for feature in numerical_features:
-    plt.figure(figsize=(10, 6))
-    sns.histplot(StudentPerformanceFactors_cleaned[feature], bins=30, kde=True)
-    plt.title(f'Distribution of {feature}')
-    plt.xlabel(feature)
-    plt.ylabel('Frequency')
-    plt.show()
+sns.boxplot(x=StudentPerformanceFactors['Hours_Studied'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Attendance'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Sleep_Hours'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Previous_Scores'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Tutoring_Sessions'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Exam_Score'])
+```
+```python
+sns.boxplot(x=StudentPerformanceFactors['Physical_Activity'])
 ```
 
 ### 5. Multivariate Analysis
