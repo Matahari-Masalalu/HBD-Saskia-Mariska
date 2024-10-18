@@ -174,15 +174,26 @@ plt.show()
 
 ##### Visualizing categorical features
 ```pythonfeature = categorical_features[1]
+cat_features = StudentPerformanceFactors.select_dtypes(include='object').columns.to_list()
 
+for col in cat_features:
+  sns.catplot(x=col, y="Exam_Score", kind="bar", dodge=False, height = 4, aspect = 3,  data=StudentPerformanceFactors, palette="Set3")
+  plt.title("Rata-rata 'Exam_Score' Relatif terhadap - {}".format(col))
 ```
+![Cuplikan layar 2024-10-19 022441](https://github.com/user-attachments/assets/f0ea575b-c696-4a93-bbef-1d2b1d6a1126)
+
+
 
 ##### Visualizing numerical features
 ```python
-
+sns.pairplot(StudentPerformanceFactors, diag_kind = 'kde')
 ```
 
-![Cuplikan layar 2024-10-19 020456](https://github.com/user-attachments/assets/3c4ae451-9832-4c4d-bca1-03bb511aa0ca)
+![Cuplikan layar 2024-10-19 021453](https://github.com/user-attachments/assets/7e3903c9-1c11-4ebb-9d97-130a0a3ce35c)
+
+##### 7. Correlation Matrix
+![Cuplikan layar 2024-10-19 022651](https://github.com/user-attachments/assets/950bf3e2-1d8e-41dd-a9b1-354546a2f529)
+
 
 
 ## Model Development
