@@ -44,3 +44,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 ```
+
+### 2. Data Loading
+To load the dataset, you can either download it from Google Drive or upload it from your local directory.
+
+```python
+from google.colab import files
+files.upload()
+
+StudentPerformanceFactors = pd.read_csv('/content/StudentPerformanceFactors.csv')
+```
