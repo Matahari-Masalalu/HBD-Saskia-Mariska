@@ -17,8 +17,7 @@ The dataset used in this project contains various features that may influence st
   - `Physical_Activity`: Level of physical activity (e.g., hours per week).
   - `Exam_Score`: The score achieved in the exam.
 
-- **Categorical Features**:![Cuplikan layar 2024-07-28 164602](https://github.com/user-attachments/assets/7bf696f5-7057-4d69-a0f7-d5af6505610d)
-
+- **Categorical Features**:
   - `Parental_Involvement`: Level of parental involvement in education.
   - `Access_to_Resources`: Availability of educational resources.
   - `Extracurricular_Activities`: Participation in extracurricular activities.
