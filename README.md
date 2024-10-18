@@ -5,6 +5,7 @@
 In the field of education, understanding the factors that influence student performance is crucial for developing effective teaching strategies and interventions. The objective of this project is to analyze various factors affecting students' exam scores. By identifying the key predictors of academic success, we can provide insights that help educators and policymakers make informed decisions. This analysis aims to enhance educational outcomes and better support students in their learning journeys.
 
 ## Data Understanding
+![Cuplikan layar 2024-10-19 015058](https://github.com/user-attachments/assets/e3363ea6-6539-404a-8455-80d1d5b49400)
 
 The dataset used in this project contains various features that may influence students' exam scores. These features include both numerical and categorical variables, such as:
 
