@@ -58,14 +58,14 @@ StudentPerformanceFactors = pd.read_csv('/content/StudentPerformanceFactors.csv'
 ### 3. Data Cleaning
 Data cleaning is an essential step to ensure the quality of our dataset. This involves:
 
-## 1. Removing Duplicates 
+# 1. Removing Duplicates 
 Duplicates in the dataset can cause bias in the analysis. Therefore, we need to remove rows that have the same values across all columns.
 
 ```python
 StudentPerformanceFactors_cleaned = StudentPerformanceFactors.drop_duplicates()
 ```
 
-## 2. Removing Missing Values (NaN)
+# 2. Removing Missing Values (NaN)
 Missing values can disrupt statistical analysis and visualization. Therefore, rows containing NaN values should be removed.
 
 ```python
