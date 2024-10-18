@@ -109,3 +109,52 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Matrix of Numerical Features')
 plt.show()
 ```
+
+### 6. Model Training
+Setelah memahami data, langkah selanjutnya adalah melatih model prediktif menggunakan algoritma regresi. Kami akan menggunakan tiga model: K-Nearest Neighbors, Random Forest, dan AdaBoost.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
+from sklearn.metrics import mean_squared_error
+
+# Splitting the data into training and testing sets
+X = StudentPerformanceFactors_cleaned.drop('Exam_Score', axis=1)
+y = StudentPerformanceFactors_cleaned['Exam_Score']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# K-Nearest Neighbors
+knn = KNeighborsRegressor()
+knn.fit(X_train, y_train)
+train_mse_knn = mean_squared_error(y_true=y_train, y_pred=knn.predict(X_train))
+
+# Random Forest
+rf = RandomForestRegressor()
+rf.fit(X_train, y_train)
+train_mse_rf = mean_squared_error(y_true=y_train, y_pred=rf.predict(X_train))
+
+# AdaBoost
+boosting = AdaBoostRegressor()
+boosting.fit(X_train, y_train)
+train_mse_boosting = mean_squared_error(y_true=y_train, y_pred=boosting.predict(X_train))
+```
+
+### 7. Model Evaluation
+Setelah melatih model, kita akan mengevaluasi kinerjanya menggunakan Mean Squared Error (MSE) untuk dataset pelatihan dan pengujian.
+```Python
+# Create a DataFrame to store MSE results
+mse_results = pd.DataFrame(columns=['Train MSE', 'Test MSE'], index=['KNN', 'Random Forest', 'AdaBoost'])
+
+# Evaluate models on training data
+mse_results.loc['KNN', 'Train MSE'] = train_mse_knn
+mse_results.loc['Random Forest', 'Train MSE'] = train_mse_rf
+mse_results.loc['AdaBoost', 'Train MSE'] = train_mse_boosting
+
+# Evaluate models on test data
+mse_results.loc['KNN', 'Test MSE'] = mean_squared_error(y_true=y_test, y_pred=knn.predict(X_test))
+mse_results.loc['Random Forest', 'Test MSE'] = mean_squared_error(y_true=y_test, y_pred=rf.predict(X_test))
+mse_results.loc['AdaBoost', 'Test MSE'] = mean_squared_error(y_true=y_test, y_pred=boosting.predict(X_test))
+
+print(mse_results)
+```
